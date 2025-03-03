@@ -1,0 +1,42 @@
+<!-- views/userBookings.ejs -->
+<h1>Your Bookings</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Classroom/Space ID</th>
+      <th>Booking Date</th>
+      <th>Booking Time</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% bookings.forEach(function(booking) { %>
+      <tr>
+        <td><%= booking.id %></td>
+        <td><%= booking.venue_id %></td>
+        <td><%= booking.booking_date %></td>
+        <td><%= booking.booking_time %></td>
+        <td><%= booking.name %></td>
+        <td>
+          <% if (booking.confirmed == 0) { %>
+            Pending
+          <% } else if (booking.confirmed == 1) { %>
+            Confirmed
+          <% } else if (booking.confirmed == 2) { %>
+            Declined
+          <% } %>
+        </td>
+        <td>
+          <a href="/user/bookings/<%= booking.id %>/edit" class="btn btn-sm btn-primary">Edit</a>
+          <form action="/user/bookings/<%= booking.id %>/delete" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+<a href="/logout" class="btn btn-secondary">Logout</a>

@@ -1,0 +1,26 @@
+<!-- views/editBooking.ejs -->
+<h1>Edit Booking</h1>
+<form method="POST" action="<%= action %>">
+  <div class="form-group">
+    <label>Venue ID:</label>
+    <input type="text" name="venue_id" value="<%= booking.venue_id %>" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Booking Date:</label>
+    <input type="date" name="booking_date" value="<%= booking.booking_date %>" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Booking Time:</label>
+    <input type="time" name="booking_time" value="<%= booking.booking_time %>" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Name:</label>
+    <% if (isAdmin) { %>
+      <input type="text" name="name" value="<%= booking.name %>" class="form-control" />
+    <% } else { %>
+      <input type="text" name="name" value="<%= booking.name %>" class="form-control" readonly />
+    <% } %>
+  </div>
+  <button type="submit" class="btn btn-primary">Update Booking</button>
+</form>
+<a href="<%= backLink %>" class="btn btn-secondary">Back</a>
