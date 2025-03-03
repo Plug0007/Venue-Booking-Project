@@ -27,8 +27,10 @@ The Venue Booking Project is a Node.js–based application that provides an onli
 ### Steps
 1. **Clone the Repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Plug0007/Venue-Booking-Project.git
    cd venue-booking-project
+   npm install
+   npm start
    ```
 ### Install Dependencies: The project includes bundled dependencies. If needed, you can also run:
 
